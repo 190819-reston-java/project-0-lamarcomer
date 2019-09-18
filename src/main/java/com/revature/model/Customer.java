@@ -12,7 +12,7 @@ public class Customer {
 	private String password;
 	private double balance;
 	private double amount;
-	static NumberFormat formatter = new DecimalFormat("#.00");
+	static NumberFormat formatter = new DecimalFormat("#0.00");
 
 	public Customer(long id, String name, String password, double balance) {
 		super();

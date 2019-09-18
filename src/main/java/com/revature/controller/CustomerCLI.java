@@ -22,7 +22,7 @@ public class CustomerCLI {
 	private static Scanner sc = new Scanner(System.in);
 	private static CustomerService customerService = new CustomerService();
 	public static Logger logger = Logger.getLogger(CustomerCLI.class);
-	static NumberFormat formatter = new DecimalFormat("#.00");
+	static NumberFormat formatter = new DecimalFormat("#0.00");
 
 	public static void loginmenu() {
 		try {
@@ -35,10 +35,6 @@ public class CustomerCLI {
 		System.out.println("--------------------------------------");
 		String i = sc.next();
 		System.out.println("--------------------------------------");
-		int input = Integer.parseInt(i);	
-		if(input !=1 | input != 2 | input != 3) {
-			throw new InvalidNumberException();
-		}
 		logger.debug("Received user input: " + i);
 		switch (i) {
 		case "1":
@@ -97,7 +93,7 @@ public class CustomerCLI {
 	}
 
 	public static void logIn() {
-		System.out.println("Please1 enter your Username and Password:");
+		System.out.println("Please enter your Username and Password:");
 		System.out.println("------------------------------");
 		System.out.println("Enter Username:");
 		String username = sc.next();

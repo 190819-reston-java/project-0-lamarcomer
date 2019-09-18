@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.model.Customer;
-import com.revature.model.Transaction;
 import com.revature.utils.ConnectionUtil;
 import com.revature.utils.StreamCloser;
 
@@ -170,14 +169,6 @@ public class CustomerDAOimplCJDBC implements CustomerDAO {
 				resultSet.getString("personpassword"), resultSet.getDouble("balance"));
 	}
 
-	private Transaction createTransactionFromRS(ResultSet resultset) throws SQLException {
-		return new Transaction(resultset.getLong("transaction_id"),
-				resultset.getLong("id"),
-				resultset.getDouble("balance"),
-				resultset.getDouble("withdrawn"),
-				resultset.getDouble("deposited"),
-				resultset.getDate("time"));
-	}
 
 	@Override
 	public Customer viewBalance(String name) {

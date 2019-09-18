@@ -12,7 +12,7 @@ public class Transaction {
 	private double withdrawn;
 	private double deposited;
 	private Date date;
-	static NumberFormat formatter = new DecimalFormat("#.00");  
+	static NumberFormat formatter = new DecimalFormat("#0.00");  
 
 	
 	public Transaction(long transactionid, long customerid, double balance, double withdrawn, double deposited, 

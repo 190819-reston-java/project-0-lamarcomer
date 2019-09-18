@@ -60,8 +60,10 @@ public class CustomerService {
 				sum = c.getBalance() - amount;
 				c.setBalance(sum);
 				customerDAO.withdrawFromBalance(c);
+				setSelectedCustomer(c);
 			}
 		}
+		
 	}
 
 	public void depositSelectedCustomer(Customer c2, double amount) {
@@ -72,6 +74,7 @@ public class CustomerService {
 			sum = amount + c.getBalance();
 			c.setBalance(sum);
 			customerDAO.depositFromBalance(c);
+			setSelectedCustomer(c);
 			}
 		}
 	}

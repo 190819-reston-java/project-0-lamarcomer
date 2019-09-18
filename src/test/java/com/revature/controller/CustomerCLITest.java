@@ -2,13 +2,13 @@ package com.revature.controller;
 
 import org.junit.Test;
 //import org.junit.Assert;
+import org.postgresql.util.PSQLException;
 
 import com.revature.model.Customer;
 import com.revature.repositories.CustomerDAO;
 import com.revature.services.CustomerService;
 import com.revature.repositories.CustomerDAOimplCJDBC;
 
-//gets the static import of the Assert class
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -29,22 +29,22 @@ public class CustomerCLITest {
 		customerService.createCustomer("Dee", "Lee");
 		customerService.getSelectedCustomer();
 	}
-	
+
 	@Test
 	public void createNewCustomer2() {
-		customerService.createCustomer("already", "there");
+		customerService.createCustomer("apples", "oranges");
 		customerService.getSelectedCustomer();
 	}
-	
+
 	@Test
 	public void logInToAccount() {
 		Customer c = customerService.getSelectedCustomer();
 		customerService.checkAccount(c.getName(), c.getPassword());
 	}
-	
+
 	@Test
 	public void logInToAccount2() {
-		Customer c = new Customer(0L, "fake", "customer", 0);
+		Customer c = new Customer(0L, "new", "customer", 0);
 		customerService.checkAccount(c.getName(), c.getPassword());
 	}
 
@@ -53,7 +53,7 @@ public class CustomerCLITest {
 		Customer c = customerService.getSelectedCustomer();
 		customerService.depositSelectedCustomer(c, 900000000);
 	}
-	
+
 	@Test
 	public void changeCustomerBalance2() {
 		Customer c = customerService.getSelectedCustomer();
@@ -73,6 +73,17 @@ public class CustomerCLITest {
 				customerDAO.deleteCustomer(c);
 			}
 		}
+
+	}
+
+	@Test
+	public void deleteCustomer2() {
+		for (Customer c : customerDAO.viewCustomers()) {
+			if (c.getName().equals("apples")) {
+				customerDAO.deleteCustomer(c);
+			}
+		}
+
 	}
 
 	@Before
